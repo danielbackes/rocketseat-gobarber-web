@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
+
+import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImage from '../../assets/logo.svg';
 
@@ -8,35 +13,58 @@ import Button from '../../components/Button';
 
 import { Container, Content, Background } from './styles';
 
-const SignIn: React.FC = () => (
-  <Container>
-    <Content>
-      <img src={logoImage} alt="GoBarber" />
-      <form>
-        <h1>Do your login</h1>
+const SignIn: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
 
-        <Input name="email" icon={FiMail} placeholder="E-mail" />
+  const handleSubmit = useCallback(async data => {
+    try {
+      formRef.current?.setErrors({});
 
-        <Input
-          name="password"
-          icon={FiLock}
-          type="password"
-          placeholder="Password"
-        />
+      const schema = Yup.object().shape({
+        email: Yup.string().required('E-mail required').email('Invalid e-mail'),
+        password: Yup.string().required('Password required'),
+      });
 
-        <Button type="submit">Sign In</Button>
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+    } catch (err) {
+      const errors = getValidationErrors(err);
 
-        <a href="forgot">Forgot password?</a>
-      </form>
+      formRef.current?.setErrors(errors);
+    }
+  }, []);
 
-      <a href="login">
-        <FiLogIn />
-        Create account
-      </a>
-    </Content>
+  return (
+    <Container>
+      <Content>
+        <img src={logoImage} alt="GoBarber" />
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <h1>Do your login</h1>
 
-    <Background />
-  </Container>
-);
+          <Input name="email" icon={FiMail} placeholder="E-mail" />
+
+          <Input
+            name="password"
+            icon={FiLock}
+            type="password"
+            placeholder="Password"
+          />
+
+          <Button type="submit">Sign In</Button>
+
+          <a href="forgot">Forgot password?</a>
+        </Form>
+
+        <a href="login">
+          <FiLogIn />
+          Create account
+        </a>
+      </Content>
+
+      <Background />
+    </Container>
+  );
+};
 
 export default SignIn;
