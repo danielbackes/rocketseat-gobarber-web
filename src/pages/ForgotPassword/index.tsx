@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { FiArrowLeft, FiMail } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
@@ -13,6 +13,8 @@ import logoImage from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import api from '../../services/api';
+
 import { Container, Content, AnimationContainer, Background } from './styles';
 
 interface ForgotPasswordFormData {
@@ -20,6 +22,8 @@ interface ForgotPasswordFormData {
 }
 
 const ForgotPassword: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+
   const formRef = useRef<FormHandles>(null);
 
   const { addToast } = useToast();
@@ -27,6 +31,8 @@ const ForgotPassword: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: ForgotPasswordFormData) => {
       try {
+        setLoading(true);
+
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -39,9 +45,16 @@ const ForgotPassword: React.FC = () => {
           abortEarly: false,
         });
 
-        // Recuperação de senha
+        await api.post('/passwords/forgot', {
+          email: data.email,
+        });
 
-        // history.push('/dashboard');
+        addToast({
+          type: 'success',
+          title: 'Recovery e-mail sended.',
+          description:
+            'We send an e-mail to confirm the password recovery, verify your inbox.',
+        });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -56,6 +69,8 @@ const ForgotPassword: React.FC = () => {
           title: 'Password recovery error',
           description: 'An error happened on the password recovery.',
         });
+      } finally {
+        setLoading(false);
       }
     },
     [addToast],
@@ -71,7 +86,9 @@ const ForgotPassword: React.FC = () => {
 
             <Input name="email" icon={FiMail} placeholder="E-mail" />
 
-            <Button type="submit">Recovery</Button>
+            <Button loading={loading} type="submit">
+              Recovery
+            </Button>
           </Form>
 
           <Link to="/">
