@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { isToday, format } from 'date-fns';
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
@@ -25,6 +26,15 @@ interface MonthAvailabilityItem {
   available: boolean;
 }
 
+interface Appointment {
+  id: string;
+  date: string;
+  user: {
+    name: string;
+    avatar_url: string;
+  };
+}
+
 const Dashboard: React.FC = () => {
   const { signOut, user } = useAuth();
 
@@ -33,6 +43,7 @@ const Dashboard: React.FC = () => {
   const [monthAvailability, setMonthAvailability] = useState<
     MonthAvailabilityItem[]
   >([]);
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
     if (modifiers.available) {
@@ -46,7 +57,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     api
-      .get(`providers/${user.id}/month-availability`, {
+      .get(`/providers/${user.id}/month-availability`, {
         params: {
           year: currentMonth.getFullYear(),
           month: currentMonth.getMonth() + 1,
@@ -56,6 +67,20 @@ const Dashboard: React.FC = () => {
         setMonthAvailability(response.data);
       });
   }, [currentMonth, user.id]);
+
+  useEffect(() => {
+    api
+      .get(`/appointments/me`, {
+        params: {
+          year: selectedDate.getFullYear(),
+          month: selectedDate.getMonth() + 1,
+          day: selectedDate.getDate(),
+        },
+      })
+      .then(response => {
+        setAppointments(response.data);
+      });
+  }, [selectedDate]);
 
   const disabledDays = useMemo(() => {
     return monthAvailability
@@ -67,6 +92,14 @@ const Dashboard: React.FC = () => {
         return new Date(year, month, monthDay.day);
       });
   }, [currentMonth, monthAvailability]);
+
+  const selectedDateAsText = useMemo(() => {
+    return format(selectedDate, 'MMMM dd');
+  }, [selectedDate]);
+
+  const selectedWeekDayAsText = useMemo(() => {
+    return format(selectedDate, 'cccc');
+  }, [selectedDate]);
 
   return (
     <Container>
@@ -89,15 +122,15 @@ const Dashboard: React.FC = () => {
 
       <Content>
         <Schedule>
-          <h1>Hours booked</h1>
+          <h1>Appointments</h1>
           <p>
-            <span>Today</span>
-            <span>Day 06</span>
-            <span>Monday</span>
+            {isToday(selectedDate) && <span>Today</span>}
+            <span>{selectedDateAsText}</span>
+            <span>{selectedWeekDayAsText}</span>
           </p>
 
           <NextAppointment>
-            <strong>Next Appointment</strong>
+            <strong>Next</strong>
             <div>
               <img src={user.avatar_url} alt={user.name} />
               <strong>{user.name}</strong>
