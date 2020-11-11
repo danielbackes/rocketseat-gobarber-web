@@ -168,7 +168,7 @@ const Dashboard: React.FC = () => {
                 <strong>{nextAppointment.user.name}</strong>
                 <span>
                   <FiClock />
-                  08:00
+                  {nextAppointment.hourFormatted}
                 </span>
               </div>
             </NextAppointment>

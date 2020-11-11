@@ -53,7 +53,7 @@ const ForgotPassword: React.FC = () => {
           type: 'success',
           title: 'Recovery e-mail sended.',
           description:
-            'We send an e-mail to confirm the password recovery, verify your inbox.',
+            'We sent an e-mail to complete the password recovery process.',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -82,12 +82,12 @@ const ForgotPassword: React.FC = () => {
         <AnimationContainer>
           <img src={logoImage} alt="GoBarber" />
           <Form ref={formRef} onSubmit={handleSubmit}>
-            <h1>Password recovery</h1>
+            <h1>Forgot password</h1>
 
             <Input name="email" icon={FiMail} placeholder="E-mail" />
 
             <Button loading={loading} type="submit">
-              Recovery
+              Confirm
             </Button>
           </Form>
 

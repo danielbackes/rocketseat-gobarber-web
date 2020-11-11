@@ -14,6 +14,8 @@ This is the GoBarber's Web Page to manage barbershop scheduling.
   - I learned that the function returned by an useEffect component will be executed as soon as the component died.
   - Another cool and useful thing that I learned was that when a set<State> method, created by useState component, receive a function instead an object, this function will receive the <State> object as parameters.
   - How animate died components with react-spring and how animate using css keyframes.
+  - Create a request that has multipart/form-data content type, using FormData Javascript class.
+  - Customize input file.
 
 
 ## What I did in this project?
@@ -28,10 +30,21 @@ This is the GoBarber's Web Page to manage barbershop scheduling.
   - Create a Toast Hook, using Context, to add and remove toasts.
   - Animate toast with react-spring component and create routes to SignIn and SignUp pages.
   - Create private routes that require authentication to be accessed and integrated account create page with the API.
+  - Create the follow pages: Forgot Password, Reset Password, Dashboard and Profile.
 
 ## See the screenshots
 
 ![SignIn](readme/screenshot-1.png)
 
 ![SignUp](readme/screenshot-2.png)
+
+![SignUp](readme/screenshot-3.png)
+
+![SignUp](readme/screenshot-4.png)
+
+![SignUp](readme/screenshot-5.png)
+
+![SignUp](readme/screenshot-6.png)
+
+![SignUp](readme/screenshot-7.png)
 

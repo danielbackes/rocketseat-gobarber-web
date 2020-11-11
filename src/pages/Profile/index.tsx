@@ -78,8 +78,6 @@ const Profile: React.FC = () => {
 
         const response = await api.put('/profile', formData);
 
-        history.push('/dashboard');
-
         updateUser(response.data);
 
         addToast({
@@ -87,6 +85,8 @@ const Profile: React.FC = () => {
           title: 'Profile updated!',
           description: 'Your profile information was successfully updated.',
         });
+
+        history.push('/dashboard');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -103,7 +103,7 @@ const Profile: React.FC = () => {
         });
       }
     },
-    [addToast, history],
+    [addToast, history, updateUser],
   );
 
   const handleAvatarChange = useCallback(

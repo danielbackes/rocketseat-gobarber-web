@@ -82,7 +82,7 @@ const SignUp: React.FC = () => {
         <AnimationContainer>
           <img src={logoImage} alt="GoBarber" />
           <Form ref={formRef} onSubmit={handleSubmit}>
-            <h1>Create account</h1>
+            <h1>Create an account</h1>
 
             <Input name="name" icon={FiUser} placeholder="Name" />
             <Input name="email" icon={FiMail} placeholder="E-mail" />
