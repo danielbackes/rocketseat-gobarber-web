@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, act } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
 
 import ForgotPassword from '../../pages/ForgotPassword';
@@ -23,7 +23,7 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-describe('SignUp Page', () => {
+describe('ForgotPassword Page', () => {
   beforeEach(() => {
     mockedAddToast.mockReset();
   });
