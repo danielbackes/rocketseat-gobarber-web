@@ -158,7 +158,7 @@ const Dashboard: React.FC = () => {
           </p>
 
           {isToday(selectedDate) && nextAppointment && (
-            <NextAppointment>
+            <NextAppointment data-testid="next-appointment">
               <strong>Next</strong>
               <div>
                 <img
@@ -174,7 +174,7 @@ const Dashboard: React.FC = () => {
             </NextAppointment>
           )}
 
-          <Section>
+          <Section data-testid="morning-appointment">
             <strong>At Morning</strong>
 
             {morningAppointments.length === 0 && (
@@ -199,7 +199,7 @@ const Dashboard: React.FC = () => {
             ))}
           </Section>
 
-          <Section>
+          <Section data-testid="afternoon-appointment">
             <strong>In the Afternoon</strong>
 
             {afternoonAppointments.length === 0 && (
