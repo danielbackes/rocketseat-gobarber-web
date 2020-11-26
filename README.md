@@ -16,6 +16,12 @@ This is the GoBarber's Web Page to manage barbershop scheduling.
   - How animate died components with react-spring and how animate using css keyframes.
   - Create a request that has multipart/form-data content type, using FormData Javascript class.
   - Customize input file.
+  - How test pages, hooks and components using **testing-library/react** and **testing-library/react-hooks** libraries:
+    - Mock, spy and stub functions
+    - Find on the DOM by text, placeholder and testeId.
+    - Async with waitFor, waitForNextUpdate, act.
+    - Use fireEvent to change value, trigger focus and blur events.
+    - Test with expect, objectContaining, toHaveStyle, toHaveBeenCalledWith, toBeUndefined, toBeTruthy.
 
 
 ## What I did in this project?
@@ -31,20 +37,19 @@ This is the GoBarber's Web Page to manage barbershop scheduling.
   - Animate toast with react-spring component and create routes to SignIn and SignUp pages.
   - Create private routes that require authentication to be accessed and integrated account create page with the API.
   - Create the follow pages: Forgot Password, Reset Password, Dashboard and Profile.
+  - Test pages, hooks and components.
+
+## Test Coverage Report (Jest library)
+
+![SignIn](readme/screenshot-8.png)
 
 ## See the screenshots
 
 ![SignIn](readme/screenshot-1.png)
-
 ![SignUp](readme/screenshot-2.png)
-
 ![SignUp](readme/screenshot-3.png)
-
 ![SignUp](readme/screenshot-4.png)
-
 ![SignUp](readme/screenshot-5.png)
-
 ![SignUp](readme/screenshot-6.png)
-
 ![SignUp](readme/screenshot-7.png)
 
