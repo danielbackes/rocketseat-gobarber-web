@@ -15,6 +15,8 @@ import getValidationErrors from '../../utils/getValidationErrors';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import noAvatarImg from '../../assets/no-avatar.jpeg';
+
 import { Container, Content, AvatarInput } from './styles';
 
 interface ProfileFormData {
@@ -146,7 +148,12 @@ const Profile: React.FC = () => {
           onSubmit={handleSubmit}
         >
           <AvatarInput>
-            <img src={user.avatar_url} alt={user.name} />
+            {user.avatar_url ? (
+              <img src={user.avatar_url} alt={user.name} />
+            ) : (
+                <img src={noAvatarImg} alt={user.name} />
+              )}
+
             <label htmlFor="avatar">
               <FiCamera />
               <input
