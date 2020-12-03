@@ -19,6 +19,7 @@ import {
 } from './styles';
 
 import logoImg from '../../assets/logo.svg';
+import noAvatarImg from '../../assets/no-avatar.jpeg';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 
@@ -133,7 +134,12 @@ const Dashboard: React.FC = () => {
         <HeaderContent>
           <img src={logoImg} alt="GoBarber" />
           <Profile>
-            <img src={user.avatar_url} alt={user.name} />
+            {user.avatar_url ? (
+              <img src={user.avatar_url} alt={user.name} />
+            ) : (
+                <img src={noAvatarImg} alt={user.name} />
+              )}
+
             <div>
               <span>Welcome,</span>
               <Link to="profile">
