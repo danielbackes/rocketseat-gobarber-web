@@ -11,6 +11,8 @@ import ResetPassword from '../pages/ResetPassword';
 import Profile from '../pages/Profile';
 import Dashboard from '../pages/Dashboard';
 
+import NotFound from '../pages/NotFound';
+
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={SignIn} />
@@ -20,7 +22,7 @@ const Routes: React.FC = () => (
 
     <Route path="/profile" component={Profile} isPrivate />
     <Route path="/dashboard" component={Dashboard} isPrivate />
+    <Route path="*" component={NotFound} />
   </Switch>
 );
-
 export default Routes;
