@@ -4,6 +4,8 @@ Project developed copying the instructor coding during the Rocketseat Bootcamp C
 
 This is the GoBarber's Web Page to manage barbershop scheduling.
 
+![Build status](https://github.com/danielbackes/rocketseat_gobarber_web/workflows/.github/workflows/production.yml/badge.svg)
+
 ## What I learned in this project?
 
   - Utilize useRef and useCallback react hooks.
