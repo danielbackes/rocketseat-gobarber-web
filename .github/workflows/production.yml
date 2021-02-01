@@ -1,8 +1,8 @@
-name: Delivery on staging
+name: Delivery on production
 
 on:
   push:
-    branches: [staging]
+    branches: [master]
 
 jobs:
   build-and-delivery:
