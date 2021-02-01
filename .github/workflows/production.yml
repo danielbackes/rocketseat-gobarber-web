@@ -45,5 +45,5 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         timeout: 6000s
         source: "./build/*"
-        target: "~/app/rocketseat_gobarber_web"
+        target: "~/app/gobarber.danielbackes.dev"
         strip_components: 1

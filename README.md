@@ -4,7 +4,7 @@ Project developed copying the instructor coding during the Rocketseat Bootcamp C
 
 This is the GoBarber's Web Page to manage barbershop scheduling.
 
-![Build status](https://github.com/danielbackes/rocketseat_gobarber_web/workflows/Delivery%20on%20production/badge.svg)
+![Build status](https://github.com/danielbackes/rocketseat-gobarber-web/workflows/Delivery%20on%20production/badge.svg)
 
 ## What I learned in this project?
 
