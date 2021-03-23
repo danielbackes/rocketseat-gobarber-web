@@ -4,7 +4,13 @@ Project developed copying the instructor coding during the Rocketseat Bootcamp C
 
 This is the GoBarber's Web Page to manage barbershop scheduling.
 
-![Build status](https://github.com/danielbackes/rocketseat-gobarber-web/workflows/Delivery%20on%20production/badge.svg)
+#### Code
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/danielbackes/rocketseat-gobarber-web/react?style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/danielbackes/rocketseat-gobarber-api?style=for-the-badge)
+
+#### Monitoring
+![Website](https://img.shields.io/website?style=for-the-badge&url=https%3A%2F%2Fgobarber.danielbackes.dev)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/danielbackes/rocketseat-gobarber-api/Delivery%20on%20production?style=for-the-badge)
 
 ## What I learned in this project?
 

@@ -108,7 +108,7 @@ const ResetPassword: React.FC = () => {
               placeholder="Password confirmation"
             />
 
-            <Button type="submit">Change password</Button>
+            <Button type="submit">Confirm</Button>
           </Form>
         </AnimationContainer>
       </Content>
