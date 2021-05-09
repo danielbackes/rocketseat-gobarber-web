@@ -4,7 +4,13 @@
 
 GoBarber Web Application to manage barbershop scheduling, developed copying the instructor coding during the [Rocketseat's](https://rocketseat.com.br) GoStack Course.
 
-[![Google Play](https://img.shields.io/badge/Website-006d77?style=for-the-badge)](https://gobarber.danielbackes.dev)
+Visit the website:
+
+<div align="center" style="margin-bottom:40px">
+  <a href="https://gobarber.danielbackes.dev">
+    <img alt="GoBarber website" width="70px" src="readme/website-icon.png"/>
+  </a>
+</div>
 
 ## 💻 Features
 - Sign Up
