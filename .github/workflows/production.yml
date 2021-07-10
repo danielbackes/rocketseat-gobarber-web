@@ -3,7 +3,9 @@ name: Delivery on production
 on:
   push:
     branches: [master]
-
+    
+  workflow_dispatch:
+  
 jobs:
   build-and-delivery:
     runs-on: ubuntu-latest
